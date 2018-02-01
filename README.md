@@ -5,8 +5,8 @@ In this assignment, you'll use the GIPHY API to make a dynamic web page that pop
 
 ### Before You Begin
 
-1. **Hit the GIPHY API**.
-	* Fool around with the GIPHY API. [You can read more here](https://github.com/Giphy).
+**Hit the GIPHY API**.
+	* Fool around with the GIPHY API. [You can read more here](https://developers.giphy.com/).
 
 	* Be sure to read about these GIPHY parameters (hint, hint): 
 		* `q`
@@ -14,9 +14,6 @@ In this assignment, you'll use the GIPHY API to make a dynamic web page that pop
 		* `rating`
 
 	* Like many APIs, GIPHY requires developers to use a key to access their API data. Their public API Key is [provided here](https://github.com/Giphy/GiphyAPI#overview). 
-
-2. **[Watch the demo video](homework_demo.mov)**.
-
 	* You should have a high-level understanding of how this assignment works before attempting to code it.
 
 ### Instructions
