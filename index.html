@@ -54,16 +54,29 @@
                         var rating = results[i].rating;
                         var p = $('<p>').text('Rating: ' + rating);
 
-                        var emotionImage = $('<img>');
+                        var emotionImage = $('<img>').attr('class', 'gif-img');
+
                         emotionImage.attr('src', results[i].images.fixed_height.url);
-                        // emotionImage.attr('data-still', results[i].images.fixed_height_still.url);
-                        // emotionImage.attr('data-animate', results[i].images.fixed_height.url);
+                        emotionImage.attr('data-still', results[i].images.fixed_height_still.url);
+                        emotionImage.attr('data-animate', results[i].images.fixed_height.url);
 
                         emotionDiv.append(p);
                         emotionDiv.append(emotionImage);
                         $('#gif-session').prepend(emotionDiv);
-
                     }
+
+                    $('.gif-img').on('click', function () {
+                        var state = $(this).attr('data-state');
+                        console.log(this)
+
+                        if (state === 'still') {
+                            $(this).attr('src', $(this).data('animate'));
+                            $(this).attr("data-state", "animate");
+                        } else {
+                            $(this).attr('src', $(this).data('still'));
+                            $(this).attr('data-state', 'still');
+                        }
+                    })
                 });
             });
         });
