@@ -12,19 +12,62 @@
 
 <body>
     <div class="container">
-        <div id="emotions"></div>
-    </div>
-    <div class="gif-session"></div>
-    <div class="search">
-        <h2>Add some emotion</h2>
-        <form id="form">
-            <label for="gif-input"></label>
-            <input type="text" value="" id="git-input">
-            <input type="submit" name="Submit" class="btn btn-success" id="submit-btn">
-        </form>
+        <div id="emotions">
+            <button class="btn btn-info" data-emotion="Bored">Bored</button>
+            <button class="btn btn-info" data-emotion="Hungry">Hungry</button>
+            <button class="btn btn-info" data-emotion="Drunk">Drunk</button>
+            <button class="btn btn-info" data-emotion="Excited">Excited</button>
+        </div>
+        <div id="gif-session"></div>
+        <div class="search">
+            <h2>Add some emotion</h2>
+            <form id="form">
+                <label for="gif-input"></label>
+                <input type="text" value="" id="git-input">
+                <input type="submit" name="Submit" class="btn btn-success" id="submit-btn">
+            </form>
+        </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript" src="assets/javascript/app.js"></script>
+    <script type="text/javascript">
+        // Event listener for all buttons on the page
+        $(document).ready(function () {
+            $('button').on('click', function () {
+                var emotion = $(this).attr('data-emotion');
+
+                // URL to search Giphy and use my key
+                var queryURL =
+                    'https://api.giphy.com/v1/gifs/search?q=' + emotion + '&api_key=tnLJTJdQDz9IyKxbezLt8rkUHZ02Ta0s&limit=10';
+
+                // AJAX call
+                $.ajax({
+                    url: queryURL,
+                    method: 'GET'
+                }).done(function (response) {
+                    // Store an array of results in the results variable
+                    var results = response.data;
+                    //   console.log(results);
+
+                    for (var i = 0; i < results.length; i++) {
+                        var emotionDiv = $('<div class="item">');
+                        // Storing the result item's rating
+                        var rating = results[i].rating;
+                        var p = $('<p>').text('Rating: ' + rating);
+
+                        var emotionImage = $('<img>');
+                        emotionImage.attr('src', results[i].images.fixed_height.url);
+                        // emotionImage.attr('data-still', results[i].images.fixed_height_still.url);
+                        // emotionImage.attr('data-animate', results[i].images.fixed_height.url);
+
+                        emotionDiv.append(p);
+                        emotionDiv.append(emotionImage);
+                        $('#gif-session').prepend(emotionDiv);
+
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>
