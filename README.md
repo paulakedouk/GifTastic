@@ -34,7 +34,4 @@ In this assignment, you'll use the GIPHY API to make a dynamic web page that pop
 
 6. Add a form to your page takes the value from a user input box and adds it into your `topics` array. Then make a function call that takes each topic in the array remakes the buttons on the page.
 
-7. **Rejoice**! You just made something really cool.
 
-## Copyright
-UC Berkeley Coding Bootcamp (C) 2018. All Rights Reserved.
